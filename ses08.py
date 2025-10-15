@@ -21,10 +21,10 @@ def lecture_graph():
     [2, 2, 2, 1, 0]
     """
     distances = {
-        'a': {},
+        'a': {'b':1, 'c':5},
         'b': {'c': 2, 'd': 5},
-        'c': {},
-        'd': {},
+        'c': {'d':2,'e':6},
+        'd': {'e':2},
         'e': {}
     }
     return distances
