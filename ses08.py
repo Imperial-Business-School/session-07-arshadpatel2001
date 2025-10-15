@@ -73,6 +73,10 @@ def dijkstra(graph, start):
         
     A[start] = 0 # distance zero to itself
 
+    # Dictionary To Store Previous Nodes
+    P = dict() 
+    P[start] = None
+
     # Main loop
     # Loop while we haven't visited all nodes
     while len(X) < len(graph.get_nodes()): 
@@ -90,13 +94,14 @@ def dijkstra(graph, start):
                     if A[src] + weight < min_dist: 
                         min_edge = [src, dest, weight] 
                         min_dist = A[src] + weight 
+                        P[dest] = src
         # Update A[min_e_dest] = A[min_e_source] + A[min_e_weight]        
         A[min_edge[1]] = A[min_edge[0]] + min_edge[2]
         
         # Add destination node from min edge to visited nodes
         X.add(min_edge[1])  
     
-    return A
+    return A, P
 
 
 def print_path(prev_nodes, v):
